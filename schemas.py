@@ -1,4 +1,6 @@
 from pydantic import BaseModel, EmailStr, Field
+from datetime import datetime
+from typing import Optional
 
 # --- 2. TYPE VALIDATION (Pydantic Models) ---
 class TicketRequest(BaseModel):
@@ -12,3 +14,14 @@ class TicketResponse(BaseModel):
     title: str
     assigned_queue: str
     status: str
+    created_at: datetime
+
+class TicketDetails(BaseModel):
+    ticket_id: int
+    title: str
+    description: str
+    user_email: str
+    priority: int
+    assigned_queue: str
+    status: str
+    created_at: datetime

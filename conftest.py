@@ -1,7 +1,7 @@
 import pytest 
 from httpx import AsyncClient, ASGITransport 
 from main import app
-from config import error_logs
+from config import error_logs, tickets_storage
 
 @pytest.fixture
 def anyio_backend():
@@ -11,6 +11,7 @@ def anyio_backend():
 @pytest.fixture(autouse=True)
 def clear_state():
     error_logs.clear()
+    tickets_storage.clear()
 
 @pytest.fixture
 async def client():

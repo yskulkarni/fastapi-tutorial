@@ -39,9 +39,9 @@ async def create_ticket(payload: TicketRequest):
         # Concurrently await both non-blocking operations
         ticket_id, _ = await asyncio.gather(db_task, audit_task)
         
-    except Exception as e:
+    except Exception:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, 
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Internal processing failed"
         )
 

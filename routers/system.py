@@ -1,4 +1,3 @@
-import asyncio
 from fastapi import APIRouter
 from config import error_logs
 from typing import List

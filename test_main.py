@@ -14,8 +14,10 @@ async def test_create_ticket_success(client: AsyncClient):
     response = await client.post("/tickets", json=payload)
     assert response.status_code == 201
     data = response.json()
-    assert data["ticket_id"] == 42
+    assert isinstance(data["ticket_id"], int) and data["ticket_id"] > 0
     assert data["assigned_queue"] == "STANDARD_SUPPORT"
+    assert data["status"] == "Open"
+    assert "created_at" in data
         
 @pytest.mark.anyio
 async def test_create_ticket_validation_trigger(client: AsyncClient):

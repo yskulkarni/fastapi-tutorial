@@ -96,6 +96,19 @@ pytest
 pytest --cov
 ```
 
+### Linting
+
+```bash
+uv run ruff check .
+uv run ruff check --fix .
+```
+
+If you want editor and pre-commit integration, install `pre-commit` and run:
+
+```bash
+uv run pre-commit install
+```
+
 ## Project Structure
 
 ```
